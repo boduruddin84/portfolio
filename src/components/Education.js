@@ -9,13 +9,13 @@ const Education = () => {
       side: 'left'
     },
     {
-      period: '2018 - 2022 / Nachole College, Nawabganj',
+      period: '2015 - 2017 / Nachole College, Nawabganj',
       degree: "HSC",
       description: '3.25 out of 5',
       side: 'right'
     },
     {
-      period: '2022 - 2023 Varendra University',
+      period: '2018 - 2022 Varendra University',
       degree: 'B. Sc. in CSE',
       description: '3.14 out of 4',
       side: 'left'

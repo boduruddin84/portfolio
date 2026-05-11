@@ -10,8 +10,8 @@ const Portfolio = () => {
           <div className="bg-surface-container-high p-4 organic-blob-alt overflow-hidden border border-outline-variant/30">
             <div className="relative w-full h-[400px] organic-blob-alt overflow-hidden">
               <Image 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB0tQPO-wU0UP6pWkn1SBi33WY_RZy_22eREcGIAK46AWGyvtuwiDsllVOp6B10sHaLIqHJDGjyCZHv5Grl72IyXSh70vh5o3x7xmFTuyywUqR6mxHHWMG1_tNABwI-P-k32nkJjHYMTJa5Fki6p1PNddLhCIxGMJN4DZr4ndTNwlHH7OLuRso9L2DdRpCJ8KW31hZPrBw-frpzINnh_E5CHHC6QsEJngM1SPd-Lu9jxPj_Ndnzt0DQWt8ZmNAzC1HCD8PxTj7wY4Y"
-                alt="The Zen Store"
+                src="/KeenKeeper.jpeg"
+                alt="KeenKeeper"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 unoptimized
@@ -20,10 +20,10 @@ const Portfolio = () => {
           </div>
         </div>
         <div className="w-full md:w-2/5 order-1 md:order-2 md:pl-gutter">
-          <span className="font-label-sm text-label-sm text-secondary bg-secondary-container/10 px-3 py-1 rounded-full">E-Commerce</span>
-          <h3 className="font-headline-lg text-headline-lg mt-4 mb-2">The Zen Store</h3>
+          <span className="font-label-sm text-label-sm text-secondary bg-secondary-container/10 px-3 py-1 rounded-full">KeenKeeper</span>
+          <h3 className="font-headline-lg text-headline-lg mt-4 mb-2">Friendship tracking app</h3>
           <p className="font-body-md text-body-md text-on-surface-variant opacity-80">
-            A headless commerce solution built for high-end artisanal brands focusing on tactile experience through digital screens.
+            A friendship tracking app that helps you stay connected with your friends..
           </p>
         </div>
       </div>

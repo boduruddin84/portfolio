@@ -1,0 +1,166 @@
+"use client";
+
+import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { gsap } from 'gsap';
+import Magnetic from './animations/Magnetic';
+
+const Hero = () => {
+  const containerRef = useRef(null);
+  const imageContainerRef = useRef(null);
+  const imageRef = useRef(null);
+  const blobRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const ctaRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.5 });
+
+      // Title & Subtitle split and reveal
+      const titleWords = titleRef.current.innerText.split(" ");
+      titleRef.current.innerHTML = titleWords.map(word => `<span class="inline-block overflow-hidden"><span class="inline-block">${word}</span></span>`).join(" ");
+      
+      const subtitleWords = subtitleRef.current.innerText.split(" ");
+      subtitleRef.current.innerHTML = subtitleWords.map(word => `<span class="inline-block overflow-hidden"><span class="inline-block">${word}</span></span>`).join(" ");
+
+      tl.from(titleRef.current.querySelectorAll("span > span"), {
+        y: "100%",
+        duration: 1.2,
+        stagger: 0.08,
+        ease: "power4.out"
+      })
+      .from(subtitleRef.current.querySelectorAll("span > span"), {
+        y: "100%",
+        duration: 1,
+        stagger: 0.04,
+        ease: "power4.out"
+      }, "-=0.8")
+      .from(imageContainerRef.current, {
+        scale: 1.2,
+        filter: "blur(20px)",
+        opacity: 0,
+        duration: 1.8,
+        ease: "power2.out"
+      }, "-=1.2")
+      .from(descriptionRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 1.2,
+        ease: "power3.out"
+      }, "-=1")
+      .from(ctaRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 1.2,
+        ease: "power3.out"
+      }, "-=1");
+
+      // Parallax mouse follow
+      const onMouseMove = (e) => {
+        const { clientX, clientY } = e;
+        const xPos = (clientX / window.innerWidth - 0.5) * 2;
+        const yPos = (clientY / window.innerHeight - 0.5) * 2;
+
+        gsap.to(imageRef.current, {
+          x: xPos * 30,
+          y: yPos * 30,
+          rotateY: xPos * 10,
+          rotateX: -yPos * 10,
+          duration: 1.2,
+          ease: "power2.out"
+        });
+
+        gsap.to(blobRef.current, {
+          x: xPos * 60,
+          y: yPos * 60,
+          duration: 1.5,
+          ease: "power2.out"
+        });
+      };
+
+      window.addEventListener("mousemove", onMouseMove);
+
+      // Floating idle
+      gsap.to(blobRef.current, {
+        rotate: 360,
+        duration: 25,
+        repeat: -1,
+        ease: "none"
+      });
+
+      return () => window.removeEventListener("mousemove", onMouseMove);
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={containerRef} className="px-margin-base max-w-7xl mx-auto mb-section-gap min-h-[90vh] flex items-center relative overflow-hidden">
+      <div className="flex flex-col md:flex-row items-center gap-gutter relative w-full">
+        {/* Asymmetric Portrait Layout */}
+        <div className="w-full md:w-1/2 relative z-10 flex justify-center md:justify-start perspective-1000">
+          <div ref={imageContainerRef} className="relative p-8">
+            <div ref={blobRef} className="absolute inset-0 bg-secondary-container/20 organic-blob-alt -z-10 blur-3xl scale-150 animate-pulse"></div>
+            <div className="relative w-80 h-[28rem] overflow-hidden organic-blob shadow-2xl transition-all duration-700 border border-outline-variant/10 bg-surface-container group">
+              <Image 
+                ref={imageRef}
+                src="/hero-portrait.jpg"
+                alt="Boduruddin"
+                fill
+                className="object-cover scale-110 group-hover:scale-125 transition-transform duration-1000"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full md:w-1/2 mt-gutter md:mt-0 text-center md:text-left space-y-10 z-20">
+          <div className="space-y-4">
+            <h1 
+              ref={titleRef}
+              className="font-display-lg text-display-lg-mobile md:text-7xl text-primary leading-tight tracking-tighter"
+            >
+              Hello, I'm Boduruddin
+            </h1>
+            <h2 
+              ref={subtitleRef}
+              className="font-display-md text-3xl md:text-5xl text-on-surface-variant font-light tracking-tight opacity-90"
+            >
+              Frontend Developer
+            </h2>
+          </div>
+          
+          <div ref={descriptionRef} className="max-w-xl">
+             <p className="font-body-lg text-lg md:text-xl text-on-surface-variant/80 leading-relaxed">
+              Developing modern web applications with a focus on <span className="text-primary italic font-medium">aesthetics</span>, functionality and accessibility.
+             </p>
+          </div>
+
+          <div ref={ctaRef} className="flex flex-wrap justify-center md:justify-start gap-10 items-center pt-6">
+            <Magnetic>
+              <button className="bg-primary hover:bg-primary-fixed text-on-primary px-12 py-6 rounded-full font-headline-md text-xl transition-all duration-500 shadow-2xl shadow-primary/20 relative group overflow-hidden active:scale-95">
+                <span className="relative z-10">Contact me</span>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              </button>
+            </Magnetic>
+            
+            <div className="flex items-center gap-8">
+              {['terminal', 'public', 'alternate_email'].map((icon) => (
+                <Magnetic key={icon}>
+                  <a className="text-on-surface-variant hover:text-primary transition-all duration-300 cursor-pointer group p-2" href="#">
+                    <span className="material-symbols-outlined !text-4xl group-hover:scale-125 transition-transform">{icon}</span>
+                  </a>
+                </Magnetic>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

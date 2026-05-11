@@ -7,7 +7,7 @@ const Footer = () => {
         <span className="font-headline-lg text-headline-lg text-secondary">Boduruddin</span>
         <div className="flex gap-12">
           <a className="font-body-md text-body-md text-on-surface-variant opacity-60 hover:text-secondary transition-colors" href="/">Home</a>
-          <a className="font-body-md text-body-md text-on-surface-variant opacity-60 hover:text-secondary transition-colors" href="#">Archive</a>
+          <a className="font-body-md text-body-md text-on-surface-variant opacity-60 hover:text-secondary transition-colors" href="#">Projects</a>
           <a className="font-body-md text-body-md text-on-surface-variant opacity-60 hover:text-secondary transition-colors" href="#">Privacy</a>
         </div>
         <p className="font-body-md text-body-md text-tertiary dark:text-tertiary-fixed-dim">

@@ -9,7 +9,7 @@ import Education from "@/components/Education";
 import Footer from "@/components/Footer";
 import BottomNav from "@/components/BottomNav";
 import SectionReveal from "@/components/animations/SectionReveal";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring } from "motion/react";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();

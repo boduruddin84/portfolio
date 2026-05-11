@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Boduruddin | Digital Sanctuary",
+  title: "Boduruddin",
   description: "Building modern web applications with a focus on aesthetics, functionality and accessibility.",
 };
 

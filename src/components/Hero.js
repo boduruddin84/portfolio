@@ -98,7 +98,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="px-margin-base max-w-7xl mx-auto mb-section-gap min-h-[90vh] flex items-center relative overflow-hidden">
+    <section ref={containerRef} className="mt-10 px-margin-base max-w-7xl mx-auto mb-section-gap min-h-[90vh] flex items-center relative overflow-hidden">
       <div className="flex flex-col md:flex-row items-center gap-gutter relative w-full">
         {/* Asymmetric Portrait Layout */}
         <div className="w-full md:w-1/2 relative z-10 flex justify-center md:justify-start perspective-1000">

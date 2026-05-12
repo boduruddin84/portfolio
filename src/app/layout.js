@@ -1,6 +1,9 @@
 import { Geist, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import AppWrapper from "@/components/AppWrapper";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,8 +37,14 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
       <body className="relative">
+        
         <AppWrapper>
-          {children}
+          <Header />
+          <main className="mt-30">
+            {children}
+          </main>
+          <ToastContainer />
+          <Footer />
         </AppWrapper>
       </body>
     </html>

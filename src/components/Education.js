@@ -3,12 +3,6 @@
 const Education = () => {
   const educationItems = [
     {
-      period: '2013 - 2015 Chourapara Fdil Madrasah',
-      degree: 'SSC',
-      description: '4.89 out of 5',
-      side: 'left'
-    },
-    {
       period: '2015 - 2017 / Nachole College, Nawabganj',
       degree: "HSC",
       description: '3.25 out of 5',

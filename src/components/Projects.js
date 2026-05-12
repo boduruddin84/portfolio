@@ -1,111 +1,140 @@
-"use client";
-
-import React, { useRef } from 'react';
-import Image from 'next/image';
-import { gsap } from 'gsap';
-import Magnetic from './animations/Magnetic';
+import Image from "next/image";
+import Link from "next/link";
 
 const Projects = () => {
-  const cardRef = useRef(null);
-  const imageRef = useRef(null);
-
-  const onMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const { left, top, width, height } = cardRef.current.getBoundingClientRect();
-    const x = (clientX - left) / width - 0.5;
-    const y = (clientY - top) / height - 0.5;
-
-    gsap.to(cardRef.current, {
-      rotateY: x * 10,
-      rotateX: -y * 10,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-
-    gsap.to(imageRef.current, {
-      x: x * 20,
-      y: y * 20,
-      scale: 1.1,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  };
-
-  const onMouseLeave = () => {
-    gsap.to(cardRef.current, {
-      rotateY: 0,
-      rotateX: 0,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-    gsap.to(imageRef.current, {
-      x: 0,
-      y: 0,
-      scale: 1,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  };
-
   return (
-    <section className="space-y-16 py-24" id="projects">
-      <div className="text-center space-y-4">
-        <span className="font-label-mono text-sm text-primary tracking-[0.4em] uppercase opacity-70">Case Study</span>
-        <h2 className="font-display-lg text-5xl md:text-7xl tracking-tighter">Featured Engineering</h2>
-      </div>
-
-      <div 
-        ref={cardRef}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
-        className="bg-surface-container-low border border-outline-variant/10 rounded-[3rem] p-8 md:p-16 group hover:border-primary/20 transition-all duration-700 perspective-1000"
-      >
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="w-full lg:w-1/2 relative">
-            <div className="aspect-video bg-surface-container rounded-2xl overflow-hidden shadow-3xl border border-white/5">
-              <Image 
-                ref={imageRef}
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfdnEi7LXPRk-otHaJW7ZYT8zH-RKkbTK15OgQ6v79efUfyGNlB41YHS117DCDozacZr7FDGKmrD7iC126cyUtfr9BxHxGKKnYaVWOoPc4-4n4wsWiwraUQlT0po6TcksUOJLL-r-PeK0NFe-15Srur1TEPhNK4jz8lkcPc8zhIVyxxydPv1fGKb6KBGcUaVmdJ0yWqPFqvaa4mQBZ8_JsvYiogEXJTyMA7V-4-CL3hH77s4rjHhZD1p-yGsoaPOKZn1SIs5wZN6dL"
-                alt="Expert Notes Project"
+    <section className="px-margin-safe max-w-7xl mx-auto space-y-section-gap">
+      {/* Project 1 */}
+      <div className="flex flex-col md:flex-row items-center gap-content-gap group">
+        <div className="w-full md:w-3/5 order-2 md:order-1">
+          <div className="bg-surface-container-high p-4 organic-blob-alt overflow-hidden border border-outline-variant/30">
+            <div className="relative w-full h-[400px] organic-blob-alt overflow-hidden">
+              <Image
+                src="/KeenKeeper.jpeg"
+                alt="KeenKeeper"
                 fill
-                className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-1000 scale-105"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
                 unoptimized
               />
             </div>
-            <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
           </div>
+        </div>
+        <div className="w-full md:w-2/5 order-1 md:order-2 md:pl-gutter">
+          <span className="font-label-sm text-label-sm text-secondary bg-secondary-container/10 px-3 py-1 rounded-full">
+            KeenKeeper
+          </span>
+          <h3 className="font-headline-lg text-headline-lg mt-4 mb-2">
+            Friendship tracking app
+          </h3>
+          <p className="font-body-md text-body-md text-on-surface-variant opacity-80">
+            A friendship tracking app that helps you stay connected with your
+            friends.
+          </p>
+          <div className="my-5 flex gap-5">
+            <Link
+              href="https://github.com/boduruddin84/keenKeeper/tree/main"
+              target="_blank"
+              className="inline-flex items-center px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-medium"
+            >
+              View on GitHub
+            </Link>
+            <Link
+              href="https://keenkeeper-p.netlify.app/"
+              target="_blank"
+              className="inline-flex items-center px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-medium"
+            >
+              View Live Site
+            </Link>
+          </div>
+        </div>
+      </div>
 
-          <div className="w-full lg:w-1/2 space-y-10">
-            <div className="space-y-4">
-               <h3 className="font-display-lg text-4xl md:text-6xl text-primary tracking-tight">Expert Notes</h3>
-               <div className="flex flex-wrap gap-3">
-                 {['TYPESCRIPT', 'NEXT.JS', 'AI/ML'].map(tag => (
-                   <span key={tag} className="px-4 py-1.5 bg-surface-container-highest border border-outline-variant/30 rounded-full font-label-mono text-[10px] tracking-wider opacity-60">
-                     {tag}
-                   </span>
-                 ))}
-               </div>
+      {/* Project 2 */}
+      <div className="flex flex-col md:flex-row items-center gap-content-gap group">
+        <div className="w-full md:w-2/5 md:pr-gutter text-right order-1">
+          <span className="font-label-sm text-label-sm text-secondary bg-secondary-container/10 px-3 py-1 rounded-full ml-auto">
+            QurbaniHat
+          </span>
+          <h3 className="font-headline-lg text-headline-lg mt-4 mb-2">
+            QurbaniHat online livestock
+          </h3>
+          <p className="font-body-md text-body-md text-on-surface-variant opacity-80">
+            QurbaniHat is a trusted online livestock marketplace where you can
+            easily find and book cows and goats for Qurbani. আমরা আপনাকে সহজ,
+            নিরাপদ এবং নির্ভরযোগ্য সেবা প্রদান করি।
+          </p>
+          <div className="my-5 flex gap-5">
+            <Link
+              href="https://github.com/boduruddin84/qurbani-hat"
+              target="_blank"
+              className="inline-flex items-center px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-medium"
+            >
+              View on GitHub
+            </Link>
+            <Link
+              href="https://qurbani-hat-iaw9.vercel.app/"
+              target="_blank"
+              className="inline-flex items-center px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-medium"
+            >
+              View Live Site
+            </Link>
+          </div>
+        </div>
+        <div className="w-full md:w-3/5 order-2">
+          <div className="bg-surface-container-high p-4 organic-blob overflow-hidden border border-outline-variant/30">
+            <div className="relative w-full h-[400px] organic-blob overflow-hidden">
+              <Image
+                src="QurbaniHat.PNG"
+                alt="QurbaniHat"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                unoptimized
+              />
             </div>
+          </div>
+        </div>
+      </div>
 
-            <p className="font-body-lg text-lg text-on-surface-variant/80 leading-relaxed max-w-lg">
-              A high-performance audio-to-text processing engine built with modern browser APIs. Features real-time streaming, local storage persistence, and advanced speech recognition with minimal latency.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-10">
-               <Magnetic>
-                 <a className="flex items-center gap-3 bg-on-surface text-surface px-8 py-4 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-500 group/btn" href="#">
-                    <span className="material-symbols-outlined text-xl">code</span>
-                    <span className="font-headline-md text-sm">View Source</span>
-                 </a>
-               </Magnetic>
-               
-               <Magnetic>
-                 <a className="flex items-center gap-3 text-primary hover:text-on-surface transition-colors group/link" href="#">
-                    <span className="font-headline-md text-sm">Live Experience</span>
-                    <span className="material-symbols-outlined group-hover/link:translate-x-2 transition-transform">arrow_forward_ios</span>
-                 </a>
-               </Magnetic>
+      {/* Project 3 */}
+      <div className="flex flex-col md:flex-row items-center gap-content-gap group">
+        <div className="w-full md:w-3/5 order-2 md:order-1">
+          <div className="bg-surface-container-high p-4 organic-blob-alt overflow-hidden border border-outline-variant/30">
+            <div className="relative w-full h-[400px] organic-blob-alt overflow-hidden">
+              <Image
+                src="/DigiTool.jpeg"
+                alt="DigiTool"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                unoptimized
+              />
             </div>
+          </div>
+        </div>
+        <div className="w-full md:w-2/5 order-1 md:order-2 md:pl-gutter">
+          <span className="font-label-sm text-label-sm text-secondary bg-secondary-container/10 px-3 py-1 rounded-full">
+            DigiTool
+          </span>
+          <h3 className="font-headline-lg text-headline-lg mt-4 mb-2">
+            Job tracking app
+          </h3>
+          <p className="font-body-md text-body-md text-on-surface-variant opacity-80">
+            Digi Tools Hub is a powerful and user-friendly platform designed for job seekers. It provides essential tools like resume building, job tracking, and interview preparation to make the job search process easier and more efficient.
+          </p>
+          <div className="my-5 flex gap-5">
+            <Link
+              href="https://github.com/boduruddin84/digi-tools"
+              target="_blank"
+              className="inline-flex items-center px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-medium"
+            >
+              View on GitHub
+            </Link>
+            <Link
+              href="https://digi-tools-project.netlify.app/"
+              target="_blank"
+              className="inline-flex items-center px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-medium"
+            >
+              View Live Site
+            </Link>
           </div>
         </div>
       </div>

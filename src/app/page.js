@@ -29,15 +29,21 @@ export default function Home() {
   
       
       <main className="relative">
-        <Hero />
+        
         
         {/* Spacer for transition */}
-        <div className="h-32 md:h-48" />
+        
         
         {/* <HorizontalProjects /> */}
-        <ProjectPage />
         
-        <div className="px-6 max-w-7xl mx-auto space-y-section-gap py-24">
+        
+        <div className="px-6 max-w-7xl mx-auto space-y-section-gap pt-24">
+          <SectionReveal>
+            <Hero />
+          </SectionReveal>
+          <SectionReveal>
+            <ProjectPage />
+          </SectionReveal>
           <SectionReveal>
             <Stacks />
           </SectionReveal>

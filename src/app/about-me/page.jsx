@@ -3,7 +3,7 @@ import AboutMe from "@/components/AboutMe"
 
 const AboutMePage = () => {
   return (
-    <div>
+    <div className="mx-4">
         <AboutMe />
     </div>
   )

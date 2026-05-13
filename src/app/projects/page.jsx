@@ -4,7 +4,7 @@ import Projects from "@/components/Projects"
 
 const ProjectPage = () => {
   return (
-    <div>
+    <div className="mx-4">
         <Projects />
     </div>
   )

@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
         
         <AppWrapper>
           <Header />
-          <main className="mt-30">
+          <main>
             {children}
           </main>
           <ToastContainer />

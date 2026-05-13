@@ -26,16 +26,8 @@ export default function Home() {
         style={{ scaleX }}
       />
 
-  
       
       <main className="relative">
-        
-        
-        {/* Spacer for transition */}
-        
-        
-        {/* <HorizontalProjects /> */}
-        
         
         <div className="px-6 max-w-7xl mx-auto space-y-section-gap pt-24">
           <SectionReveal>
